@@ -28,7 +28,7 @@ Run
 python Example_of_use1.py
 ```
 
-to reproduce two basic examples.
+to reproduce one basic example.
 
 ## Files
 
