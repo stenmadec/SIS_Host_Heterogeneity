@@ -34,7 +34,7 @@ to reproduce one basic example.
 
 - `Example_of_use1.py`: minimal working examples.
 - `Example_of_use2.py`: minimal working examples using NetworkX.
-- `Example_Comparing_Networks.py`: comparison of three host contact networks sharing the same epidemiological parameters.
+- `Exploration_Comparing_Networks.py`: comparison of three host contact networks sharing the same epidemiological parameters.
 - `hosts_replicator/`: package source code.
 
 ## Author
