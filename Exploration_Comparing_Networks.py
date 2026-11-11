@@ -10,15 +10,12 @@ import numpy as np
 import Hosts_Replicator as hr
 import matplotlib.pyplot as plt
 import matplotlib
-##Generation of the exact figure or generation of a new one
-networkisfixe=True
-varstrainisfixe=True
-##standard deviation of a pairplot
-def stdnet(mom2,kbar):
-    return np.sqrt(np.max((mom2-kbar**2,0)))
+# Exploration mode:
+# - random strain interactions or fixed interactions
+# - random networks or fixed networks
+varstrainisfixe=False #if True the deviation from neutrality is fixed at the value given below
+networkisfixe=False #if true the networks are fixe at the value given below
 
-###Generation of the perturbations
-matplotlib.rcParams['axes.labelsize'] = 20
 ######### Epidemiological parameters
 data={'sigma':0.3,
       'beta':0.15,
@@ -27,13 +24,13 @@ data={'sigma':0.3,
       'gamma':0.5}
 
 
-n=5# Just if we need
-if varstrainisfixe:
+n=10# Number of strains if need
 
+###Generation of the perturbations
+if varstrainisfixe:
 
     ###example for the figure 4 of the paper 
     ##How host contact network impacts $N$-strain SIS dynamics with coinfection via a global replicator equation
-
     vg=np.array([[-0.36272215,  0.13257483, -0.28100324, -0.00625503, -0.09398224,
              0.06513616,  0.19350629,  0.01637501,  0.01412913,  0.18524046],
            [ 0.11182475,  0.08100528, -0.09656951,  0.46808387,  0.09399792,
@@ -59,10 +56,13 @@ if varstrainisfixe:
 else : 
     vg=np.random.random((n,n))-0.5
 data['a']=vg
-##generation of the Network
+
+##generation of the Networks
 numbernet=1
 kappa0,P0,mom0=[data['kbar']],[1.],data['kbar']**2
 if networkisfixe:
+    ###example for the figure 4 of the paper 
+    ##How host contact network impacts $N$-strain SIS dynamics with coinfection via a global replicator equation
     #kappa1,P1,mom1=Gen_Distrib(kbar,num=numbernet,distrib=Distribution_three)[0]
     kappa1=[10, 20, 30]
     P1=[0.4, 0.20, 0.4]
@@ -101,6 +101,10 @@ else:
     ListNet.append((kappa0,P0,mom0))
     ListNet+=hr.Gen_Distrib(kbar=data['kbar'],num=numbernet,distrib='three')
     max_kappa = max(max(net[0]) for net in ListNet)
+##standard deviation of a pairplot
+def stdnet(mom2,kbar):
+    return np.sqrt(np.max((mom2-kbar**2,0)))
+########################################
 Titre_ex=['Random network\n','Homogeneous Network\n','3-class network\n']
 ListNet =[(*net, titre) for  net,titre in zip(ListNet,Titre_ex)]
 ListNet.sort(key=lambda x:stdnet(x[2],data['kbar']))
@@ -108,6 +112,8 @@ sig=[stdnet(x[2],data['kbar']) for x in ListNet]
 
 
 ######Generation des replicateurs et trajectoires
+
+matplotlib.rcParams['axes.labelsize'] = 20
 listLambda,listTitle,listres=[],[],[]
 
 for x,s in zip(ListNet,sig):
