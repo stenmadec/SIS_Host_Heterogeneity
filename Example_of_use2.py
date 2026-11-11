@@ -7,43 +7,41 @@ Created on Wed Nov 11 14:32:30 2026
 import networkx as nx
 import numpy as np
 import Hosts_Replicator as hr
-########Example 2##################
+
 ###################################
-##Definition of the network #######
+## Definition of the network ######
 ###################################
 
-##Network with the adgency matrix###################
+## Network from an adjacency matrix ##############
 
-Ntot = 20  # nombre de sommets
-p = 0.2  # probabilité d'avoir une arête entre deux nœuds
+Ntot = 20  # number of nodes
+p = 0.2    # probability of an edge between two nodes
 
-# Génère un graphe aléatoire
+# Generate a random graph
 G = nx.erdos_renyi_graph(Ntot, p)
 
-# Convertit le graphe en matrice d'adjacence (sous forme de tableau NumPy)
+# Convert the graph to an adjacency matrix (NumPy array)
 adj_matrix = nx.to_numpy_array(G, dtype=int)
 ###################################
 
 ###################################
-### number of strains #############
+### Number of strains #############
 ###################################
-n=10
+n = 10
 ######################################
-## Variation from theterogeneity #####
+## Variation from neutrality #######
 ######################################
 ## In this example there is a        #
-## random variation in the           #
-## co-infection                      #
+## random variation in               #
+## co-infection susceptibility       #
 ######################################
-var_alpha=np.random.random((n,n))-0.5
+var_alpha = np.random.random((n, n)) - 0.5
 
 ######################################
 
-data2={'CM':adj_matrix,
-      'a':var_alpha,
-      'sigma':0.2}
-Lamb=hr.lamb(**data2)
-sol2=hr.traject(T=1000,LAMBDA=Lamb)
-hr.Final_figure(sol2,title='example 2')
-
-
+data2 = {'CM': adj_matrix,
+         'a': var_alpha,
+         'sigma': 0.2}
+Lamb = hr.lamb(**data2)
+sol2 = hr.traject(T=1000, LAMBDA=Lamb)
+hr.Final_figure(sol2, title='example 2')
