@@ -50,6 +50,7 @@ def infer_size(**kwargs):
 
             if n is None:
                 n = m
+                n_key=key 
             elif m != n:
                 raise ValueError(
                     f"All vector parameters must have the same length: "
@@ -349,7 +350,6 @@ def lamb(**kwargs):
     else:
         n = kwargs.pop('n',1)  # erreur naturelle si absent
     data=init_data(**kwargs)
-    print(mu(**data))
     varb  = kwargs.pop('b',  np.zeros(n))
     varg1 = kwargs.pop('c1', np.zeros(n))
     varg2 = kwargs.pop('c2', np.zeros((n, n)))
@@ -378,6 +378,7 @@ def lamb(**kwargs):
 def pairplot(Lamb,ax=None,title='',**kwargs):
     """Plot all the pairwize fitness (Lambda_ij,lambda_ji)
     of a Matrix  Lamb=(lambda_ij)_{ij}"""
+    import matplotlib.pyplot as plt
     if ax is None : fig,ax=plt.subplots()
     n=len(Lamb)
     Lambhet=[]
