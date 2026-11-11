@@ -1,4 +1,4 @@
-# Hosts_Replicateur
+# # SIS_Host_Heterogeneity
 
 Python package implementing the host-replicator framework.
 
