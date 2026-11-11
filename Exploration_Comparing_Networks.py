@@ -97,9 +97,9 @@ if networkisfixe:
     ListNet=[(kappa0,P0,mom0),(kappa1,P1,mom1),(kappa2,P2,mom2)]
     max_kappa=40.
 else:
-    ListNet=hr.Gen_Distrib(kbar=data['kbar'],num=numbernet,distrib='random')
-    ListNet.append((kappa0,P0,mom0))
+    ListNet=[(kappa0,P0,mom0)]
     ListNet+=hr.Gen_Distrib(kbar=data['kbar'],num=numbernet,distrib='three')
+    ListNet+=hr.Gen_Distrib(kbar=data['kbar'],num=numbernet,distrib='random')
     max_kappa = max(max(net[0]) for net in ListNet)
 ##standard deviation of a pairplot
 def stdnet(mom2,kbar):
