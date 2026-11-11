@@ -114,7 +114,8 @@ def weights_classes(Lkbar, bins=(0,0.5,7,15), itera=1000):
         for i in  tqdm(range(itera), desc=f"gen. {itera} Networks for kbar={kbar}"):
             distrib = np.random.choice(['random', 'three', 'bin','unif'])
             kappa, P, mom2 = Gen_Distrib(kbar, distrib=distrib,mult=3)[0]
-            V[i] = np.sqrt(np.real(mom2- kbar**2))
+            mk=sum(k*p for k,p in zip(kappa,P))
+            V[i] = np.sqrt(np.real(mom2- mk**2))
 
         # compute class weights
         Q = [np.mean((V >= bins[j]) & (V < bins[j+1]))
