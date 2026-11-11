@@ -11,7 +11,7 @@ from tqdm import tqdm
 def Distrib(Kbar,mult=3,kappa=None):
     """Generate support kappa and random prob. vector Pk."""
     if kappa is None :
-        n=np.random.randint(Kbar+1,Kbar*mult)
+        n=np.random.randint(int(Kbar)+1,int(Kbar)*mult)
         kappa=list(range(1,n+1))
     n=len(kappa)
     Pk=np.random.random(n)
@@ -70,7 +70,7 @@ def Gen_Distrib(kbar,num=1,distrib='random',**kwargs):
      'random', 'three', 'bin' or  'unif'
    kwargs contains optional parameters for the chosen distribution.
    """
-
+    kbar=int(kbar)
     ListNet=[]
     # Extract optional parameters
     if distrib=='three' : 
