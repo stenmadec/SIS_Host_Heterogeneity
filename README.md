@@ -1,8 +1,8 @@
 # SIS_Host_Heterogeneity
 
-Python package implementing the host-replicator framework for multi-strain SIS dynamics under host heterogeneity.
+Python library implementing the host-replicator framework for multi-strain SIS dynamics under host heterogeneity.
 
-This package accompanies the papers
+This library accompanies the papers
 
 - *Multi-strain SIS dynamics with coinfection under host population structure*
 - *How host contact network impacts N-strain SIS dynamics with coinfection via a global replicator equation*
