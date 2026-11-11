@@ -112,10 +112,7 @@ def weights_classes(Lkbar, bins=(0,0.5,7,15), itera=1000):
 
         # simulate iter networks
         for i in  tqdm(range(itera), desc=f"gen. {itera} Networks for kbar={kbar}"):
-            distrib = np.random.choice([Distribution_random,
-                                        Distribution_three,
-                                        Distribution_unif,
-                                        Distribution_bin])
+            distrib = np.random.choice(['random', 'three', 'bin','unif'])
             kappa, P, mom2 = Gen_Distrib(kbar, distrib=distrib,mult=3)[0]
             V[i] = np.sqrt(np.real(mom2- kbar**2))
 
