@@ -35,7 +35,7 @@ to reproduce a basic example.
 - `Example_of_use1.py`: minimal working examples.
 - `Example_of_use2.py`: minimal working examples using NetworkX.
 - `Example_of_use3.py`: network heterogeneity inducing coexistence under combined variations in transmission (`b`) and priority effects (`w`).
-- `Example_of_use4.py`: network heterogeneity stabilizing oscillatory dynamics into a fixed equilibrium under variation in co-infection rate (`a`).
+- `Example_of_use4.py`: network heterogeneity stabilizing oscillatory dynamics into a fixed equilibrium under variation in co-infection (`a`).
 - `Exploration_Comparing_Networks.py`: comparison of three host contact networks sharing the same epidemiological parameters (Figure 4 of the paper).
 - `Hosts_Replicator/`: package source code.
 
