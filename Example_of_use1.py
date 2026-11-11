@@ -38,4 +38,5 @@ data1={'Kappa':Kappa,
 Lamb=hr.lamb(**data1)
 sol1=hr.traject(T=1000,LAMBDA=Lamb)
 hr.Final_figure(sol1)
+plt.show()
 
