@@ -336,7 +336,7 @@ def lamb(**kwargs):
     Any omitted variation parameter is assumed to be identically zero,
     corresponding to neutrality for the associated trait.
     """
-    for key in ('b', 'c1', 'c2', 'a'):
+    for key in ('b', 'c1', 'c2', 'a','w'):
         if key in kwargs:
             arr = np.asarray(kwargs[key])
     
